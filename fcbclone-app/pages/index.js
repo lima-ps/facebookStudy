@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import Login from '../components/Login';
 import Feed from '../components/Feed';
+import RightSidebar from '../components/RightSidebar';
 
 export default function Home({session}) {
   if (!session) return <Login />
@@ -15,12 +16,13 @@ export default function Home({session}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header/> 
-      <main className="felx bg-gray-100">
+      <main className="flex bg-gray-100">
         {/*Left Sidbar */}
         <Sidebar/>
         {/*Feed (create Posts) */}
         <Feed/>
         {/* Right Sidebar*/}
+        <RightSidebar/>
       </main>
     </div>
   )
