@@ -6,8 +6,11 @@ import {MdOutlineOndemandVideo, MdOutlineExpandMore} from 'react-icons/md';
 import {AiOutlineShop, AiFillMessage, AiFillBell} from 'react-icons/ai';
 import {IoGameControllerOutline} from 'react-icons/io5';
 import {CgMenuGridO} from 'react-icons/cg';
+import {useSession, signOut} from 'next-auth/react';
+
 
 const Header = () => {
+  const {data: session} = useSession();
   return (
     <div className='bg-white flex items-center p-2 shadow-md top-0 sticky z-50 h-16'>
         {/* Left */}
@@ -42,10 +45,11 @@ const Header = () => {
         </div>
         {/* Right */}
         <div className='flex items-center justify-end min-w-fit space-x-2'>
-        <Image src='https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/800px-2021_Facebook_icon.svg.png'
-            height={30}
-            width={30}/>
-            <p className='hidden xl:inline-flex font-semibold text-sm whitespace-nowrap p-3 max-w-xs'>Phillip</p>
+        <Image onClick={signOut} src={session?.user.image}
+            height={40}
+            width={40}
+            className='rounded-full cursor-pointer' />
+            <p className='hidden xl:inline-flex font-semibold text-sm whitespace-nowrap p-3 max-w-xs'>{session?.user.name.split(" ")[0]}</p>
             <CgMenuGridO size={20} className='hidden lg:inline-flex h-10 w-10 bg-gray-200 text-gray-600 rounded-full p-2 cursor-pointer hover:bg-gray-300' />
             <AiFillMessage size={20} className='hidden lg:inline-flex h-10 w-10 bg-gray-200 text-gray-600 rounded-full p-2 cursor-pointer hover:bg-gray-300' />
             <AiFillBell size={20} className='hidden lg:inline-flex h-10 w-10 bg-gray-200 text-gray-600 rounded-full p-2 cursor-pointer hover:bg-gray-300' />
