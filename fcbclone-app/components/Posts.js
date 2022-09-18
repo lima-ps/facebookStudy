@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-//import { addAllPost, selectPost } from "../public/src/features/postSlice";
+import { addAllPost, selectPost } from "../public/src/features/postSlice";
 import Post from "./Post";
 
 const Posts = () => {

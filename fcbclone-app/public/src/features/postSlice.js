@@ -8,7 +8,7 @@ export const postSlice = createSlice({
   reducers: {
     addPost: (state, action) => {
       console.log("AddPost Action");
-      state.value.unshift(action.payload);
+      state.value.unshift(action.payload); /* unshift funcionacomo push para inserir algo, mas insere no inicio e nao no final */
     },
     addAllPost: (state, action) => {
       console.log("AddPost Action");
